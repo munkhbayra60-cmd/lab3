@@ -1,18 +1,14 @@
--- UNION жишээ
-SELECT city FROM customers UNION SELECT city FROM customers;
+# SQL Join Lab 
+Энэхүү лаборантын ажил нь SQL JOIN-уудын төрөл болон хүснэгт хоорондын харьцааг судлах зорилготой.
 
--- UNION ALL жишээ
-SELECT city FROM customers UNION ALL SELECT city FROM customers;
--- Ажилтан ба түүний менежер
-SELECT e.name AS employee, m.name AS manager
-FROM employees e
-LEFT JOIN employees m ON e.manager_id = m.employee_id;
-SELECT c.name, o.order_date, p.product_name, oi.quantity
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-JOIN order_items oi ON o.order_id = oi.order_id
-JOIN products p ON oi.product_id = p.product_id;
-erDiagram
-    ORDERS ||--o{ ORDER_ITEMS : contains
-    PRODUCTS ||--o{ ORDER_ITEMS : "is in"
-    CUSTOMERS ||--o{ ORDERS : places
+## 1. UNION болон UNION ALL
+- **UNION:** Давхардсан утгыг хасдаг.
+- **UNION ALL:** Бүх утгыг давхардуулж харуулдаг.
+
+![UNION-ийн үр дүн](images/union_result.png)
+
+## 2. SELF JOIN ON нөхцөл
+Менежер болон ажилтны ID-г солиход үр дүн дараах байдлаар өөрчлөгдөнө...
+
+## 3. Customer -> Orders -> Order_Items
+Нэг хэрэглэгч олон захиалга өгч болох тул 1:N харьцаа үүсэж байна.
